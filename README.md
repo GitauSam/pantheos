@@ -31,9 +31,9 @@ Simple fullstack solution that displays all customers in the datastore and provi
 
   1. take note of container ids
       - docker ps
-     
-  2. stop back-end solution
-      - docker stop 'back-end-container-id'
-      
-  3. stop front-end solution
+  
+  2. stop front-end solution
       - docker stop 'front-end-container-id'
+          
+  3. stop back-end solution
+      - docker stop 'back-end-container-id'
