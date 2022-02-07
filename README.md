@@ -22,14 +22,17 @@ Simple fullstack solution that displays all customers in the datastore and provi
       - docker build --tag=jumia-backend:latest .
       - docker run -p7600:7600 jumia-backend
       
-  5. run the front-end solution
+  5. open another terminal and cd into the front-end solution
+      - cd jumia-backend
+      
+  6. run the front-end solution
       - docker build --tag=jumia-frontend:latest .
       - docker run -p3300:3000 jumia-frontend
       - access the front-end via your browser: 'http://localhost:3300'
       
 ## how to stop
 
-  1. take note of container ids
+  1. open another terminal and take note of container ids
       - docker ps
   
   2. stop front-end solution
