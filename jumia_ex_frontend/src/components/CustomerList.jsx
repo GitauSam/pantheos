@@ -10,11 +10,15 @@ import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
+import Alert from '@mui/material/Alert'
+import Stack from '@mui/material/Stack'
 
 const CustomerList = () => {
     const [customers, setCustomers] = useState(null)
     const [country, setCountry] = useState("")
     const [phoneState, setPhoneState] = useState("")
+    const [errorOccurred, setErrorOccurred] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
     const fetchCustomers = () => {
         CustomerDataService
@@ -23,12 +27,17 @@ const CustomerList = () => {
                 console.log(response)
                 if (response.data.code === '200') {
                     setCustomers(response.data.data)
+                    setErrorOccurred(false)
                 } else {
-
+                    console.log(response.data.message)
+                    setErrorMessage(response.data.message)
+                    setErrorOccurred(true)
                 }
             })
             .catch(e => {
                 console.log(e)
+                setErrorMessage("Unknown error occurred")
+                setErrorOccurred(true)
             })
     }
 
@@ -39,12 +48,17 @@ const CustomerList = () => {
                 console.log(response)
                 if (response.data.code === '200') {
                     setCustomers(response.data.data)
+                    setErrorOccurred(false)
                 } else {
-
+                    console.log(response.data.message)
+                    setErrorMessage(response.data.message)
+                    setErrorOccurred(true)
                 }
             })
             .catch(e => {
                 console.log(e)
+                setErrorMessage("Unknown error occurred")
+                setErrorOccurred(true)
             })
     }
 
@@ -53,6 +67,11 @@ const CustomerList = () => {
     }, [])
 
     return <>
+            {errorOccurred && 
+                <Stack sx={{ width: '100%' }} spacing={2}>
+                    <Alert severity="error">{errorMessage}</Alert>
+                </Stack>
+            }
             <div className="Filter-section">
                 <Box
                     component="form"
