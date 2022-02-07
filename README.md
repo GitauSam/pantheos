@@ -33,7 +33,7 @@ Simple fullstack solution that displays all customers in the datastore and provi
       - docker ps
      
   2. stop back-end solution
-      - docker stop <back-end-container-id>
+      - docker stop '<back-end-container-id>'
       
   3. stop front-end solution
-      - docker stop <front-end-container-id>
+      - docker stop '<front-end-container-id>'
